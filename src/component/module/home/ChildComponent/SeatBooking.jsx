@@ -55,15 +55,15 @@ export const SeatBooking = () => {
       (data) => data?.name !== undefined
     );
     console.log(allBookingSeats);
-    
+
     if (allBookingSeats?.length > 0 && allBookingSeats?.length <= 5) {
       alert(
         `Booking Seats Are \n ${SeatsBooking?.map(
           (data) => `${data?.name} : ${data?.rowId}-${data?.colId} \n`
         )}`
       );
-    }else{
-        alert("Book At Least 1 Seats.")
+    } else {
+      alert("Book At Least 1 Seats.");
     }
   };
 
@@ -85,6 +85,7 @@ export const SeatBooking = () => {
               {new Array(data?.Rows)?.fill(0)?.map((row, rowId) => {
                 return (
                   <div
+                    key={row + rowId + 1}
                     style={{
                       display: "flex",
                       gap: "10px",
@@ -94,6 +95,7 @@ export const SeatBooking = () => {
                     {new Array(data?.columns)?.fill(0)?.map((column, colId) => {
                       return (
                         <button
+                          key={column + 1 + colId}
                           className={`${
                             SeatsBooking?.some(
                               (seats) =>
